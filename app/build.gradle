@@ -1,4 +1,8 @@
-apply plugin: 'com.android.application'
+if (isLibrary.toBoolean()) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
 
 apply plugin: 'kotlin-android'
 
@@ -6,14 +10,21 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 27
+
     defaultConfig {
-        applicationId "com.liubase.groupmain"
+        if (!isLibrary.toBoolean()) {
+            applicationId "com.liubase.groupmain"
+        }
+
         minSdkVersion 25
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        resourcePrefix "groupmain_"
     }
+
     buildTypes {
         release {
             minifyEnabled false
