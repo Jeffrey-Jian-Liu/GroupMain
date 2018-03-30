@@ -16,5 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         
+        val id = BuildConfig.APPLICATION_ID
+        ModuleControl.controlFlow(id)
     }
 }
