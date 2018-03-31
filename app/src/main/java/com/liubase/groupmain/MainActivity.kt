@@ -1,7 +1,7 @@
 package com.liubase.groupmain
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import android.os.*
+import android.support.v7.app.*
 import android.widget.*
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +17,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         
         val id = BuildConfig.APPLICATION_ID
-        ModuleControl.controlFlow(id)
+        ModuleControl.controlFlow(id, this)
     }
 }

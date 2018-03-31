@@ -8,6 +8,16 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.github.dcendents.android-maven'
+
+apply plugin: 'com.jfrog.bintray'
+
+version = "1.0.1"
+group = "com.liubase.groupmain"
+
+def siteUrl ='https://github.com/jeffreyliu888/GroupMain'
+def gitUrl ='https://github.com/jeffreyliu888/GroupMain.git'
+
 android {
     compileSdkVersion 27
 
@@ -21,8 +31,6 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        resourcePrefix "groupmain_"
     }
 
     buildTypes {
@@ -30,6 +38,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    buildToolsVersion '27.0.3'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
     }
 }
 

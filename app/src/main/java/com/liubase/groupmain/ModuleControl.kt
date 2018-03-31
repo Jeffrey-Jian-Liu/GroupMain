@@ -10,11 +10,11 @@ object ModuleControl {
             "com.liubase.grouplogin" to "com.liubase.grouplogin.LoginModule",
             "com.liubase.groupuser" to "com.liubase.groupuser.UserModule")
     
-    fun controlFlow(id : String) {
+    fun controlFlow(id : String, ma : MainActivity) {
         when (id) {
             "com.liubase.groups"    -> appFlow()
             "com.liubase.groupmain" -> mainFlow()
-            else                    -> moduleFlow(id)
+            else                    -> moduleFlow(id, ma)
         }
     }
     
@@ -23,19 +23,19 @@ object ModuleControl {
     }
     
     private fun mainFlow() {
-        Log.d("test","Main")
+        Log.d("test", "Main")
     }
     
-    private fun moduleFlow(id : String) {
+    private fun moduleFlow(id : String, ma : MainActivity) {
         val name = moduleMap[id]
         var module : BaseModule
         try {
             val moduleClass = Class.forName(name)
             module = moduleClass.newInstance() as BaseModule
+            module.ma = ma
             module.entryPoint()
         } catch (e : Exception) {
             throw RuntimeException(e)
         }
-        
     }
 }
