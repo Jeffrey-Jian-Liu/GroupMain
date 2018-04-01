@@ -8,15 +8,7 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
-apply plugin: 'com.github.dcendents.android-maven'
-
-apply plugin: 'com.jfrog.bintray'
-
-version = "1.0.1"
-group = "com.liubase.groupmain"
-
-def siteUrl ='https://github.com/jeffreyliu888/GroupMain'
-def gitUrl ='https://github.com/jeffreyliu888/GroupMain.git'
+apply plugin: 'org.jetbrains.dokka-android'
 
 android {
     compileSdkVersion 27
@@ -58,4 +50,98 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+
+// Upload to JCenter
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+def siteUrl ='https://github.com/jeffreyliu888/GroupMain'
+def gitUrl ='https://github.com/jeffreyliu888/GroupMain.git'
+
+group = "com.liubase.groups"
+def libName = "GroupMain"
+version = "1.0.1"
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/javadoc"
+}
+
+task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
+    outputFormat = "javadoc"
+    outputDirectory = "$buildDir/docs/javadoc"
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    options.encoding "UTF-8"
+    options.charSet 'UTF-8'
+    options.author true
+    options.version true
+    options.links "https://github.com/jeffreyliu888/GroupMain"
+    failOnError false
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+install {
+    repositories.mavenInstaller {
+
+        pom {
+            project {
+                packaging 'aar'
+                name 'Groups Series - GroupMain Lib'
+                url siteUrl
+                licenses {
+                    license {
+                        name 'Groups Series - GroupMain Lib'
+                        url 'https://github.com/jeffreyliu888/GroupMain'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'jeffreyliu888'
+                        name 'Jeffrey Liu'
+                        email 'jeffrey.jian.liu@hotmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "GroupMain"
+        name = libName
+        desc = 'Groups Series - GroupMain Lib'
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["GPL-3.0"]
+        publish = true
+    }
 }
