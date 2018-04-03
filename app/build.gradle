@@ -12,6 +12,7 @@ apply plugin: 'org.jetbrains.dokka-android'
 
 android {
     compileSdkVersion 27
+    resourcePrefix "main_"
 
     defaultConfig {
         if (!isLibrary.toBoolean()) {
@@ -68,7 +69,7 @@ def gitUrl ='https://github.com/jeffreyliu888/GroupMain.git'
 
 group = "com.liubase.groups"
 def libName = "GroupMain"
-version = "1.0.1"
+version = "1.0.4"
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -80,12 +81,13 @@ dokka {
     outputDirectory = "$buildDir/javadoc"
 }
 
-task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
+task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask, dependsOn: sourcesJar) {
+    dependsOn sourcesJar
     outputFormat = "javadoc"
     outputDirectory = "$buildDir/docs/javadoc"
 }
 
-task javadoc(type: Javadoc) {
+task javadoc(type: Javadoc, dependsOn: dokkaJavadoc) {
     source = android.sourceSets.main.java.srcDirs
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
     options.encoding "UTF-8"

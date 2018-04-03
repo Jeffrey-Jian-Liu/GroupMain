@@ -10,22 +10,22 @@ class MainActivity : AppCompatActivity() {
     private val myTag = "Main Activity"
     
     val pAL : ArrayList<FrameLayout> = ArrayList()
-    val fm : FragmentManager = this!!.supportFragmentManager
+    val fm : FragmentManager = this.supportFragmentManager
     
     override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    
+        setContentView(R.layout.main_activity)
+        
         val frame0 : FrameLayout = findViewById(R.id.frame0)
-    
+        
         val frame1 : FrameLayout = findViewById(R.id.frame1)
-    
+        
         val frame2 : FrameLayout = findViewById(R.id.frame2)
-    
+        
         val frame3 : FrameLayout = findViewById(R.id.frame3)
-       
+        
         val frame4 : FrameLayout = findViewById(R.id.frame4)
-    
+        
         pAL.add(frame0)
         pAL.add(frame1)
         pAL.add(frame2)

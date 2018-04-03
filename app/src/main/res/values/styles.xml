@@ -1,11 +1,18 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="main_AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/main_colorPrimaryLight</item>
+        <item name="android:colorPrimaryDark">@color/main_colorPrimaryDark</item>
+        <item name="android:colorAccent">@color/main_colorAccent</item>
+        <item name="android:navigationBarColor">@color/main_colorPrimaryDark</item>
+        <item name="android:statusBarColor">@color/main_colorPrimaryDark</item>
+    </style>
+
+    <style name="main_LinearLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/main_colorPrimaryLight</item>
     </style>
 
 </resources>
