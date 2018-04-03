@@ -42,10 +42,18 @@ android {
     }
 }
 
+ext {
+    com_android_version = '27.1.0'
+}
+
 dependencies {
+    //com.android libs
+    //support libraries
+    implementation "com.android.support:appcompat-v7:$com_android_version"
+    implementation "com.android.support:support-fragment:$com_android_version"
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
