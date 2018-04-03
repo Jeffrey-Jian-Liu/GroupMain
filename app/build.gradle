@@ -24,6 +24,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        archivesBaseName = "GroupMain"
     }
 
     buildTypes {
@@ -68,10 +69,11 @@ def siteUrl ='https://github.com/jeffreyliu888/GroupMain'
 def gitUrl ='https://github.com/jeffreyliu888/GroupMain.git'
 
 group = "com.liubase.groups"
+version = "1.0.5"
 def libName = "GroupMain"
-version = "1.0.4"
 
 task sourcesJar(type: Jar) {
+    archiveName = libName+"-"+version+"-sources.jar"
     from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
 }
@@ -98,6 +100,7 @@ task javadoc(type: Javadoc, dependsOn: dokkaJavadoc) {
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
+    archiveName = libName+"-"+version+"-javadoc.jar"
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
