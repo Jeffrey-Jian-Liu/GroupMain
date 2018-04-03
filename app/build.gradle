@@ -69,7 +69,7 @@ def gitUrl ='https://github.com/jeffreyliu888/GroupMain.git'
 
 group = "com.liubase.groups"
 def libName = "GroupMain"
-version = "1.0.3"
+version = "1.0.4"
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -82,7 +82,6 @@ dokka {
 }
 
 task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask, dependsOn: sourcesJar) {
-    dependsOn sourcesJar
     outputFormat = "javadoc"
     outputDirectory = "$buildDir/docs/javadoc"
 }
@@ -115,6 +114,7 @@ install {
             project {
                 packaging 'aar'
                 name 'Groups Series - GroupMain Lib'
+                artifactId 'GroupMain'
                 url siteUrl
                 licenses {
                     license {
