@@ -38,7 +38,7 @@ object ModuleControl {
             module = moduleClass.newInstance() as BaseModule
             module.ma = ma
             val ft = ma.fm.beginTransaction()
-            ft.add(R.id.frame2, module.entryPoint())
+            ft.add(R.id.main_frame2, module.entryPoint())
             ft.commit()
             showPanel(2, ma)
         } catch (e : Exception) {
