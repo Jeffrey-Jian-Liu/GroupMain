@@ -3,9 +3,10 @@ package com.liubase.groupmain
 import android.support.v4.app.*
 
 /* Created by Jeffrey Liu on 29/03/2018. */
-abstract class BaseModule() {
+open class BaseModule {
+    open fun entryFragment() : Fragment {
+        return Fragment()
+    }
     
-    lateinit var ma : MainActivity
-    
-    abstract fun entryPoint() : Fragment
+    open fun entryPoint(){}
 }

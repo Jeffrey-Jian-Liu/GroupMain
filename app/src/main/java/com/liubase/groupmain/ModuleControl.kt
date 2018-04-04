@@ -12,13 +12,15 @@ object ModuleControl {
     private val moduleMap = mapOf("com.liubase.groups" to "com.liubase.groups",
             "com.liubase.groupmain" to "com.liubase.groupmain",
             "com.liubase.grouplogin" to "com.liubase.grouplogin.LoginModule",
+            "com.liubase.groupnetwork" to "com.liubase.groupnetwork.NetworkModule",
             "com.liubase.groupuser" to "com.liubase.groupuser.UserModule")
     
     fun controlFlow(id : String, ma : MainActivity) {
         when (id) {
-            "com.liubase.groups"    -> appFlow()
-            "com.liubase.groupmain" -> mainFlow()
-            else                    -> moduleFlow(id, ma)
+            "com.liubase.groups"       -> appFlow()
+            "com.liubase.groupmain"    -> mainFlow()
+            "com.liubase.groupnetwork" -> libFlow(id)
+            else                       -> fragmentFlow(id, ma)
         }
     }
     
@@ -30,15 +32,25 @@ object ModuleControl {
         Log.d("test", "Main")
     }
     
-    private fun moduleFlow(id : String, ma : MainActivity) {
+    private fun libFlow(id : String) {
+        val name = moduleMap[id]
+        try {
+            val moduleClass = Class.forName(name)
+            val module = moduleClass.newInstance() as BaseModule
+            module.entryPoint()
+        } catch (e : Exception) {
+            throw RuntimeException(e)
+        }
+    }
+    
+    private fun fragmentFlow(id : String, ma : MainActivity) {
         val name = moduleMap[id]
         var module : BaseModule
         try {
             val moduleClass = Class.forName(name)
             module = moduleClass.newInstance() as BaseModule
-            module.ma = ma
             val ft = ma.fm.beginTransaction()
-            ft.add(R.id.main_frame2, module.entryPoint())
+            ft.add(R.id.main_frame2, module.entryFragment())
             ft.commit()
             showPanel(2, ma)
         } catch (e : Exception) {
