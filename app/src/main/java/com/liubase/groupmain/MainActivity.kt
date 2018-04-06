@@ -3,6 +3,7 @@ package com.liubase.groupmain
 import android.os.*
 import android.support.v4.app.*
 import android.support.v7.app.*
+import android.util.*
 import android.widget.*
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +33,8 @@ class MainActivity : AppCompatActivity() {
         pAL.add(frame3)
         pAL.add(frame4)
         
-        val id = application.packageName
+        val id = applicationInfo.loadLabel(packageManager).toString()
+        Log.d(myTag,id)
         ModuleControl.controlFlow(id, this)
     }
 }

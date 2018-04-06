@@ -9,27 +9,27 @@ import android.view.*
 /* Created by Jeffrey Liu on 30/03/2018. */
 object ModuleControl {
     
-    private val moduleMap = mapOf("com.liubase.groups" to "com.liubase.groups",
-            "com.liubase.groupmain" to "com.liubase.groupmain",
-            "com.liubase.grouplogin" to "com.liubase.grouplogin.LoginModule",
-            "com.liubase.groupnetwork" to "com.liubase.groupnetwork.NetworkModule",
-            "com.liubase.groupuser" to "com.liubase.groupuser.UserModule")
+    private val moduleMap = mapOf("Groups" to "com.liubase.groups",
+            "GroupMain" to "com.liubase.groupmain",
+            "GroupLogin" to "com.liubase.grouplogin.LoginModule",
+            "GroupNetwork" to "com.liubase.groupnetwork.NetworkModule",
+            "GroupUser" to "com.liubase.groupuser.UserModule")
     
     fun controlFlow(id : String, ma : MainActivity) {
         when (id) {
-            "com.liubase.groups"       -> appFlow()
-            "com.liubase.groupmain"    -> mainFlow()
-            "com.liubase.groupnetwork" -> libFlow(id)
+            "Groups"       -> appFlow()
+            "GroupMain"    -> mainFlow()
+            "GroupNetwork" -> libFlow(id)
             else                       -> fragmentFlow(id, ma)
         }
     }
     
     private fun appFlow() {
-    
+        Log.d("test", "Groups")
     }
     
     private fun mainFlow() {
-        Log.d("test", "Main")
+        Log.d("test", "GroupMain")
     }
     
     private fun libFlow(id : String) {
