@@ -1,4 +1,4 @@
-package com.liubase.groupmain
+package com.liubase.groups.groupmain
 
 import android.app.*
 import android.content.*
@@ -10,10 +10,10 @@ import android.view.*
 object ModuleControl {
     
     private val moduleMap = mapOf("Groups" to "com.liubase.groups",
-            "GroupMain" to "com.liubase.groupmain",
-            "GroupLogin" to "com.liubase.grouplogin.LoginModule",
-            "GroupNetwork" to "com.liubase.groupnetwork.NetworkModule",
-            "GroupUser" to "com.liubase.groupuser.UserModule")
+            "GroupMain" to "com.liubase.groups.groupmain",
+            "GroupLogin" to "com.liubase.groups.grouplogin.LoginModule",
+            "GroupNetwork" to "com.liubase.groups.groupnetwork.NetworkModule",
+            "GroupUser" to "com.liubase.groups.groupuser.UserModule")
     
     fun controlFlow(id : String, ma : MainActivity) {
         when (id) {

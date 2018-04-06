@@ -69,7 +69,7 @@ def siteUrl ='https://github.com/jeffreyliu888/GroupMain'
 def gitUrl ='https://github.com/jeffreyliu888/GroupMain.git'
 
 group = "com.liubase.groups"
-version = "1.0.9"
+version = "1.0.10"
 def libName = "GroupMain"
 
 task sourcesJar(type: Jar) {
