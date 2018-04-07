@@ -5,35 +5,35 @@
     android:orientation="horizontal">
 
     <FrameLayout
-        android:id="@+id/main_frame0"
+        android:id="@+id/frame0"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:visibility="gone" />
 
     <FrameLayout
-        android:id="@+id/main_frame1"
+        android:id="@+id/frame1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:visibility="gone" />
 
     <FrameLayout
-        android:id="@+id/main_frame2"
+        android:id="@+id/frame2"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:visibility="gone" />
 
     <FrameLayout
-        android:id="@+id/main_frame3"
+        android:id="@+id/frame3"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:visibility="gone" />
 
     <FrameLayout
-        android:id="@+id/main_frame4"
+        android:id="@+id/frame4"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"

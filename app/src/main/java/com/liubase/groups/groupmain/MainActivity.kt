@@ -17,15 +17,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
         
-        val frame0 : FrameLayout = findViewById(R.id.main_frame0)
+        val frame0 : FrameLayout = findViewById(R.id.frame0)
         
-        val frame1 : FrameLayout = findViewById(R.id.main_frame1)
+        val frame1 : FrameLayout = findViewById(R.id.frame1)
         
-        val frame2 : FrameLayout = findViewById(R.id.main_frame2)
+        val frame2 : FrameLayout = findViewById(R.id.frame2)
         
-        val frame3 : FrameLayout = findViewById(R.id.main_frame3)
+        val frame3 : FrameLayout = findViewById(R.id.frame3)
         
-        val frame4 : FrameLayout = findViewById(R.id.main_frame4)
+        val frame4 : FrameLayout = findViewById(R.id.frame4)
         
         pAL.add(frame0)
         pAL.add(frame1)
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         pAL.add(frame4)
         
         val id = applicationInfo.loadLabel(packageManager).toString()
-        Log.d(myTag,id)
+        Log.d(myTag, id)
         ModuleControl.controlFlow(id, this)
     }
 }

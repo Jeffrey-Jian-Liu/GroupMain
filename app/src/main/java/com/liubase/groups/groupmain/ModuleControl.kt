@@ -1,10 +1,6 @@
 package com.liubase.groups.groupmain
 
-import android.app.*
-import android.content.*
-import android.content.res.*
 import android.util.*
-import android.view.*
 
 /* Created by Jeffrey Liu on 30/03/2018. */
 object ModuleControl {
@@ -19,8 +15,8 @@ object ModuleControl {
         when (id) {
             "Groups"       -> appFlow()
             "GroupMain"    -> mainFlow()
-            "GroupNetwork" -> libFlow(id)
-            else                       -> fragmentFlow(id, ma)
+            "GroupNetwork" -> libFlow(id, ma)
+            else           -> fragmentFlow(id, ma)
         }
     }
     
@@ -32,11 +28,12 @@ object ModuleControl {
         Log.d("test", "GroupMain")
     }
     
-    private fun libFlow(id : String) {
+    private fun libFlow(id : String, ma : MainActivity) {
         val name = moduleMap[id]
         try {
             val moduleClass = Class.forName(name)
             val module = moduleClass.newInstance() as BaseModule
+            module.ma = ma
             module.entryPoint()
         } catch (e : Exception) {
             throw RuntimeException(e)
@@ -49,26 +46,10 @@ object ModuleControl {
         try {
             val moduleClass = Class.forName(name)
             module = moduleClass.newInstance() as BaseModule
-            val ft = ma.fm.beginTransaction()
-            ft.add(R.id.main_frame2, module.entryFragment())
-            ft.commit()
-            showPanel(2, ma)
+            module.ma = ma
+            module.addFragment(module.index)
         } catch (e : Exception) {
             throw RuntimeException(e)
-        }
-    }
-    
-    private fun showPanel(index : Int, ma : MainActivity) {
-        val mode : UiModeManager = ma.getSystemService(Context.UI_MODE_SERVICE) as UiModeManager
-        val density = ma.resources.displayMetrics.densityDpi
-        val b : Boolean = (mode.currentModeType == Configuration.UI_MODE_TYPE_DESK) && density == 160
-        
-        for (i in ma.pAL.indices) {
-            if (b || i == index) {
-                ma.pAL[i].visibility = View.VISIBLE
-            } else {
-                ma.pAL[i].visibility = View.GONE
-            }
         }
     }
 }
