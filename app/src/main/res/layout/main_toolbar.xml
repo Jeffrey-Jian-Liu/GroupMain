@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/main_colorPrimary">
+
+    <TextView
+        style="@style/main_ToolBarTextView"
+        android:layout_marginStart="20dp" />
+
+    <Button
+        android:id="@+id/button_right"
+        style="@style/main_ToolBarButton"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/button_middle"
+        style="@style/main_ToolBarButton"
+        android:layout_toStartOf="@id/button_right" />
+
+    <Button
+        android:id="@+id/button_left"
+        style="@style/main_ToolBarButton"
+        android:layout_toStartOf="@id/button_middle" />
+</RelativeLayout>
