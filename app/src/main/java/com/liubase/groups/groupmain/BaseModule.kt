@@ -13,13 +13,17 @@ open class BaseModule {
     open var index : Int = 2
     
     fun addFragment(i : Int) {
+       addFragment(i,entryFragment())
+    }
+    
+    fun addFragment(i : Int, f : Fragment) {
         val ft = ma.fm.beginTransaction()
         when (i) {
-            0 -> ft.add(R.id.frame0, entryFragment())
-            1 -> ft.add(R.id.frame1, entryFragment())
-            2 -> ft.add(R.id.frame2, entryFragment())
-            3 -> ft.add(R.id.frame3, entryFragment())
-            4 -> ft.add(R.id.frame4, entryFragment())
+            0 -> ft.add(R.id.frame0, f)
+            1 -> ft.add(R.id.frame1, f)
+            2 -> ft.add(R.id.frame2, f)
+            3 -> ft.add(R.id.frame3, f)
+            4 -> ft.add(R.id.frame4, f)
         }
         ft.commit()
         showPanel()

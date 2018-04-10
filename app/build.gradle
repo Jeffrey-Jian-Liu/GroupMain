@@ -45,7 +45,7 @@ android {
 }
 
 ext {
-    com_android_version = '27.1.0'
+    com_android_version = '27.1.1'
 }
 
 dependencies {
