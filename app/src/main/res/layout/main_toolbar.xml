@@ -5,21 +5,22 @@
     android:background="@color/main_colorPrimary">
 
     <TextView
+        android:id="@+id/toolbar_title"
         style="@style/main_ToolBarTextView"
         android:layout_marginStart="20dp" />
 
     <Button
-        android:id="@+id/button_right"
+        android:id="@+id/toolbar_button_right"
         style="@style/main_ToolBarButton"
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:id="@+id/button_middle"
+        android:id="@+id/toolbar_button_middle"
         style="@style/main_ToolBarButton"
-        android:layout_toStartOf="@id/button_right" />
+        android:layout_toStartOf="@id/toolbar_button_right" />
 
     <Button
-        android:id="@+id/button_left"
+        android:id="@+id/toolbar_button_left"
         style="@style/main_ToolBarButton"
-        android:layout_toStartOf="@id/button_middle" />
+        android:layout_toStartOf="@id/toolbar_button_middle" />
 </RelativeLayout>
