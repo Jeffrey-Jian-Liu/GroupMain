@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         
         if (!initLanguage()) {
             val id = applicationInfo.loadLabel(packageManager).toString()
-            Log.d(myTag, id)
             ModuleControl.controlFlow(id, this)
         }
     }

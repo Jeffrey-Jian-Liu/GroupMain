@@ -7,12 +7,14 @@
     <TextView
         android:id="@+id/toolbar_title"
         style="@style/main_ToolBarTextView"
-        android:layout_marginStart="20dp" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp" />
 
     <Button
         android:id="@+id/toolbar_button_right"
         style="@style/main_ToolBarButton"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="5dp" />
 
     <Button
         android:id="@+id/toolbar_button_middle"
